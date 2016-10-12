@@ -1,0 +1,55 @@
+
+.page-header{
+	background-color: #ff9400;
+	margin-top: 0;
+	padding: 20px 20px 20px 40px;
+	width: 100%;
+}
+.page-header{
+	color: #fff;
+	font-size: 36px;
+	text-decoration: none;
+}
+.content{
+	margin-left: 40px;
+}
+h1,h2,h3,h4{
+	font-family:'Lobster', cursive;
+}
+.date{
+	float: right;
+	color: #828282;
+}
+.save{
+	float: right;
+}
+.publish_btn{
+	float: right;
+}
+.edit_tool{
+	float: right;
+}
+.post-form textarea,.post-form input{
+	width: 100%;
+}
+.top-menu,top-menu:hover,.top-menu:visited{
+	color: #fff;
+	float: right;
+	font-size: 26px;
+	margin-right: 20px;
+}
+.post{
+	margin-bottom: 50px;
+}
+.post h2 a:hover{
+	color: #000000;
+}
+.comment{
+	margin:20px 0px 20px 20px;
+}
+h2 a{
+  color: #FCA205;
+  font-family:'Lobster';
+}
+
+

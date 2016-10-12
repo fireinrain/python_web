@@ -1,0 +1,40 @@
+{% extends 'blog/base.html'%}
+
+{% block content %}
+<div class="content">
+	<h2>{{ post.title}}</h2>
+	{% if user.is_authenticated %}
+	<div class="edit_tool">
+		<a href="{% url 'post_edit' pk=post.pk%}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+		<a href="{% url 'blog.views.post_publish' pk=post.pk %}" class="btn btn-default">发表</a>
+		<a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+	</div>
+	{% else %}
+	<div class="edit_tool">
+		<a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+	</div>
+	{% endif %}
+	<p>{{post.text|linebreaksbr}}</p>
+	{% if post.published_date%}
+	<div class="date">
+		{{post.published_date}}
+	</div>
+	
+	
+	
+	{% endif %}
+</div>
+<hr>
+<a href="{% url 'add_comment_to_post' pk=post.pk%}">添加评论</a>
+<hr>
+{% for comment in post.comments.all %}
+   <div class="comment">
+   	<div class="date">{{comment.created_date}}</div>
+   	<strong>{{comment.author}}</strong>
+   	<p>{{comment.text|linebreaks}}</p>
+   </div>
+   {% empty %}
+   <p>还没有游客评论：</p>
+   {% endfor %}
+{% endblock %}
+

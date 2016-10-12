@@ -1,0 +1,9 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<h2>新公告</h2>
+<form action="" method="POST" class='post-form'>
+	{% csrf_token %}
+	{{form.as_p}}
+	<button type="submit" class="save btn btn-default">保存</button>
+</form>
+{% endblock %}
