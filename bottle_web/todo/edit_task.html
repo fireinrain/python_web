@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task edit</title>
+</head>
+<body>
+    <p>edit the task with id {{num}}</p>
+    <form action="/edit/{{num}}" method="get">
+        <input type="text" name="task" value="{{old[0]}}">
+        <select name="status" id="">
+            <option value="">open</option>
+            <option value="">closed</option>
+        </select>
+        <br>
+        <input type="submit" name="save" value="save">
+    </form>
+
+
+</body>
+</html>
