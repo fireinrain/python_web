@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask</title>
+      <link rel="stylesheet" href="{{url_for('static',filename='bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+
+    <!--js-->
+<script src="{{url_for('static',filename='jquery.min.js')}}"></script>
+<script src="{{url_for('static',filename='bootstrap.min.js')}}"></script>
+
+</head>
+<body>
+<div class="container">
+    <h1>Flask-TDD</h1>
+    <div class="metanav">
+        {% if not session.logged_in %}
+        <a href="{{url_for('login')}}">log in</a>
+        {% else %}
+        <a href="{{url_for('logout')}}">log out</a>
+        {% endif %}
+    </div>
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{message}}</div>
+    {% endfor %}
+
+    {% block body %}{% endblock %}
+
+    {% if session.logged_in %}
+    <form action="{{url_for('add_entry')}}" method="post" class="add-entry">
+        <dl>
+            <dt>Title:</dt>
+            <dd><input type="text" size="30" name="title"></dd>
+            <dt>Text:</dt>
+            <dd><textarea name="text" id="" cols="40" rows="5"></textarea></dd>
+            <dd><input type="submit" value="Share" class="btn btn-default"></dd>
+
+        </dl>
+    </form>
+    {% endif %}
+
+<ul class="entries">
+    {% for entry in entries %}
+    <li class="entry">
+        <h2 id="{{entry.post_id}}">{{entry.title}}</h2>
+        {{entry.text|safe}}
+    </li>
+    {% else %}
+    <li><em>No entries yet. ADD some</em></li>
+    {% endfor %}
+</ul>
+
+
+</div>
+<script type="text/javascript" src="{{url_for('static', filename='main.js') }}">
+
+</script>
+
+
+</body>
+</html>
